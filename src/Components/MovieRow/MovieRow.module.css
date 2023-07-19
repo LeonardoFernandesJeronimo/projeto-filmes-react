@@ -12,7 +12,7 @@
 }
 
 .list {
-    width: 9999999999999999px;
+    transition: all ease .5s;
 }
 
 .item {
@@ -30,3 +30,41 @@
 .item img:hover {
     transform: scale(1);
 }
+
+.left,
+.right {
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transition: all ease .2s;
+}
+
+.navigateLeft {
+    width: 25px;
+}
+
+.navigateRight {
+    width: 25px;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.movieRow:hover .left:hover,
+.movieRow:hover .right:hover {
+    opacity: 1;
+}
+

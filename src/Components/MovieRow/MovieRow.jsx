@@ -1,17 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './MovieRow.module.css'
 
+
 const MovieRow = ({ title, items }) => {
+  const [scrollX, setScrollX] = useState(-400)
+
+  const handleLeft = () => {
+    let x = scrollX + Math.round(window.innerWidth / 2)
+    if(x > 0) {
+      x = 0
+    }
+    setScrollX(x)
+  }
+
+  const handleRight = () => {
+
+  }
+
   return (
     <div className={styles.movieRow}>
       <h2>{title}</h2>
+
+      <div className={styles.left} onClick={handleLeft}>
+        <img className={styles.navigateLeft} src="https://brandeps.com/icon-download/N/Navigate-before-icon-vector-01.svg" alt="seta retornar" />
+      </div>
+
+      <div className={styles.right} onClick={handleRight}>
+        <img className={styles.navigateRight} src="https://brandeps.com/icon-download/N/Navigate-next-icon-vector-01.svg" alt="seta avançar" />
+      </div>
+
       <div className={styles.listArea}>
-        <div className={styles.list}>
-            {items.results.length > 0 && items.results.map((item, key) => (
-                <div key={key} className={styles.item}>
-                    <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_title} />
-                </div>
-            ))}
+        <div 
+          className={styles.list} 
+          style={{
+            marginLeft: scrollX,
+            width: items.results.length * 150
+          }} 
+        >
+          {items.results.length > 0 && items.results.map((item, key) => (
+              <div key={key} className={styles.item}>
+                  <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_title} />
+              </div>
+          ))}
         </div>
       </div>
     </div>
