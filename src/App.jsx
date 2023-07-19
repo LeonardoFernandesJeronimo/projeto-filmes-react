@@ -68,6 +68,12 @@ const App = () => {
         Feito por Leonardo Fernandes Jeronimo<br/>
         Dados pegos do site Themoviedb.org
       </footer>
+      
+      {movieList.length <= 0 &&
+        <div className='loading'>
+          <img src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="loading" />
+        </div>
+      }
     </div>
   )
 }

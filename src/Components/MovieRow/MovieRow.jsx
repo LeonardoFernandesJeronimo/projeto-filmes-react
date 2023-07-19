@@ -14,7 +14,12 @@ const MovieRow = ({ title, items }) => {
   }
 
   const handleRight = () => {
-
+    let x = scrollX - Math.round(window.innerWidth / 2)
+    let listW = items.results.length * 150
+    if((window.innerWidth - listW) > x) {
+      x = (window.innerWidth - listW) - 60
+    }
+    setScrollX(x)
   }
 
   return (
@@ -22,11 +27,11 @@ const MovieRow = ({ title, items }) => {
       <h2>{title}</h2>
 
       <div className={styles.left} onClick={handleLeft}>
-        <img className={styles.navigateLeft} src="https://brandeps.com/icon-download/N/Navigate-before-icon-vector-01.svg" alt="seta retornar" />
+        <img src="https://brandeps.com/icon-download/N/Navigate-before-icon-vector-01.svg" alt="seta retornar" />
       </div>
 
       <div className={styles.right} onClick={handleRight}>
-        <img className={styles.navigateRight} src="https://brandeps.com/icon-download/N/Navigate-next-icon-vector-01.svg" alt="seta avançar" />
+        <img src="https://brandeps.com/icon-download/N/Navigate-next-icon-vector-01.svg" alt="seta avançar" />
       </div>
 
       <div className={styles.listArea}>
@@ -37,7 +42,8 @@ const MovieRow = ({ title, items }) => {
             width: items.results.length * 150
           }} 
         >
-          {items.results.length > 0 && items.results.map((item, key) => (
+          {items.results.length > 0 && items.results
+            .map((item, key) => (
               <div key={key} className={styles.item}>
                   <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_title} />
               </div>

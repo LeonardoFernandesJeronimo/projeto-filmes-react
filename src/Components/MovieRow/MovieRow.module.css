@@ -47,14 +47,6 @@
     transition: all ease .2s;
 }
 
-.navigateLeft {
-    width: 25px;
-}
-
-.navigateRight {
-    width: 25px;
-}
-
 .left {
     left: 0;
 }
@@ -63,8 +55,22 @@
     right: 0;
 }
 
-.movieRow:hover .left:hover,
-.movieRow:hover .right:hover {
+.left img {
+    width: 25px;
+}
+
+.right img {
+    width: 25px;
+}
+
+.left:hover,
+.right:hover {
     opacity: 1;
 }
 
+@media (max-width:760px) {
+    .left,
+    .right {
+        opacity: 1;
+    }
+}
